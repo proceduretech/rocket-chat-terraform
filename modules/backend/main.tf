@@ -28,6 +28,10 @@ resource "aws_dynamodb_table" "terraform_state_locks" {
     name = "LockID"
     type = "S"
   }
+
+  tags = {
+    purpose = "Provide Terraform backend state locking and consistency checking."
+  }
 }
 
 
@@ -59,6 +63,10 @@ resource "aws_s3_bucket" "terraform_state_storage" {
 
   lifecycle {
     prevent_destroy = true
+  }
+
+  tags = {
+    "purpose" = "To store the terraform state as a given key"
   }
 
 }
