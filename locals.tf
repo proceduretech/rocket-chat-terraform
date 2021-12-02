@@ -6,3 +6,11 @@ locals {
     managedByTerraform = "True",
   }
 }
+
+locals {
+  default_state_storage_bucket = "${var.environment}-${var.project}-rocketchat-tfstate"
+}
+
+locals {
+  state_storage_bucket = var.state_storage_bucket != "" ? var.state_storage_bucket : local.default_state_storage_bucket
+}

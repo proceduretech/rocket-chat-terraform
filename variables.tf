@@ -35,10 +35,21 @@ variable "aws_profile" {
 variable "aws_shared_credentials_file" {
   type        = string
   description = "This is the path to the AWS shared credentials file."
+  default = "~/.aws/credentials"
 }
 
 variable "additonal_aws_default_tags" {
   type        = map(string)
   default     = {}
   description = "Key-Value map of tags to apply across all resources handled by AWS provider."
+}
+
+
+# ------------------------------------------------------------------------------
+# Backend Configuration Variables
+# ------------------------------------------------------------------------------
+variable "state_storage_bucket" {
+  type        = string
+  default = ""
+  description = "This is the S3 bucket name which stores the terraform state."
 }
